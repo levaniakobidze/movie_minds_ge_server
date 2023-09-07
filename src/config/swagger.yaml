@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: BOOKS
+  description: books app API
+  version: 0.1.9
+
+servers:
+  - url: http://64.226.83.132:4444/api
+    description: production server
+  - url: http://localhost:4444/api
+    description: local server
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: Registration successful
+        400:
+          description: Bad request
+        500:
+          description: Internal Server Error
