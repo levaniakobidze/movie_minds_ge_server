@@ -9,9 +9,13 @@ import passport from "./src/config/passport-config.js";
 import session from "express-session";
 import flash from "connect-flash";
 const server = express();
-
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+server.use(cors(corsOptions));
 server.use(bodyParser.json());
-server.use(cors());
 dotenv.config();
 // MongoDB connection
 connectMongo();
