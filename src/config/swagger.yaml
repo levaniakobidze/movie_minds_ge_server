@@ -5,9 +5,9 @@ info:
   version: 0.1.9
 
 servers:
-  - url: http://64.226.83.132:4444/api
+  - url: http://localhost:8000/api/v1
     description: production server
-  - url: http://localhost:4444/api
+  - url: http://localhost:8000/api/v1
     description: local server
 components:
   securitySchemes:
@@ -16,7 +16,7 @@ components:
       scheme: bearer
       bearerFormat: JWT
 paths:
-  /auth/register:
+  /user/register:
     post:
       summary: Register a new user
       requestBody:
@@ -34,6 +34,26 @@ paths:
       responses:
         200:
           description: Registration successful
+        400:
+          description: Bad request
+        500:
+          description: Internal Server Error
+  /user/login:
+    post:
+      summary: Register a new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: user succsessfully logged in
         400:
           description: Bad request
         500:
