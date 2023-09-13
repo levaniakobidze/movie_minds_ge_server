@@ -35,7 +35,7 @@ export const registerUser = async (req, res) => {
       from: "levaniakobidze25@gmail.com",
       to: email,
       subject: "დაადასტირეთ ელ.ფოსტა",
-      text: `ელ.ფოსტის დასადასტურებლად გადადით მოცემულ ლინკზე: http://localhost:8000/api/v1/user/verify/${verificationToken}`,
+      text: `ელ.ფოსტის დასადასტურებლად გადადით მოცემულ ლინკზე: ${process.env.CLIENT_HOST_URL}/api/v1/user/verify/${verificationToken}`,
     };
     await transporter.sendMail(mailOptions);
     res
@@ -69,10 +69,10 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
-export const loginUser = (req, res) => {
-  passport.authenticate("local", {
-    successRedirect: "http://localhost:3000",
-    failureRedirect: "http://localhost:3000",
-    failureFlash: true,
-  });
-};
+// export const loginUser = (req, res) => {
+//   passport.authenticate("local", {
+//     successRedirect: "http://localhost:3000",
+//     failureRedirect: "http://localhost:3000",
+//     failureFlash: true,
+//   });
+// };

@@ -10,7 +10,7 @@ import session from "express-session";
 import flash from "connect-flash";
 const server = express();
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: process.env.CLIENT_HOST_URL,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
