@@ -69,10 +69,10 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
-// export const loginUser = (req, res) => {
-//   passport.authenticate("local", {
-//     successRedirect: "http://localhost:3000",
-//     failureRedirect: "http://localhost:3000",
-//     failureFlash: true,
-//   });
-// };
+export const loginUser = (req, res) => {
+  passport.authenticate("local", {
+    successRedirect: "http://localhost:3000",
+    failureRedirect: "http://localhost:3000",
+    failureFlash: true,
+  });
+};
