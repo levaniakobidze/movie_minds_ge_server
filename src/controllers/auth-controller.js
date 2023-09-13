@@ -35,7 +35,7 @@ export const registerUser = async (req, res) => {
       from: "levaniakobidze25@gmail.com",
       to: email,
       subject: "დაადასტირეთ ელ.ფოსტა",
-      text: `ელ.ფოსტის დასადასტურებლად გადადით მოცემულ ლინკზე: ${process.env.SERVER_HOST_URL}/api/v1/user/verify/${verificationToken}`,
+      text: `ელ.ფოსტის დასადასტურებლად გადადით მოცემულ ლინკზე: ${process.env.CLIENT_HOST_URL}/api/v1/user/verify/${verificationToken}`,
     };
     await transporter.sendMail(mailOptions);
     res
