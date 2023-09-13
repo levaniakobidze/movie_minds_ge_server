@@ -18,7 +18,7 @@ server.use(cors(corsOptions));
 server.use(bodyParser.json());
 dotenv.config();
 // MongoDB connection
-connectMongo();
+
 // Session
 server.use(
   session({
@@ -37,4 +37,6 @@ server.use("/api/v1/user/", userRouter);
 
 server.use("/", ...swaggerMiddleware());
 
-server.listen(8000, () => console.log("Server running on port 8000"));
+connectMongo().then(() =>
+  server.listen(8000, () => console.log("Server running on port 8000"))
+);
