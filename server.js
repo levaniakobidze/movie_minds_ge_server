@@ -2,7 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
-import userRouter from "./src/routes/auth-routes.js";
+import authRouter from "./src/routes/auth-routes.js";
+import userRouter from "./src/routes/user-routes.js";
 import connectMongo from "./src/config/mongo.js";
 import swaggerMiddleware from "./src/middlewares/swagger-middleware.js";
 import passport from "./src/config/passport-config.js";
@@ -32,7 +33,8 @@ server.use(passport.initialize());
 server.use(passport.session());
 // Set up connect-flash middleware
 server.use(flash());
-
+// Routes
+server.use("/api/v1/auth/", authRouter);
 server.use("/api/v1/user/", userRouter);
 
 server.use("/", ...swaggerMiddleware());
