@@ -1,9 +1,5 @@
 import express from "express";
-import {
-  registerUser,
-  loginUser,
-  verifyEmail,
-} from "../controllers/auth-controller.js";
+import { registerUser, verifyEmail } from "../controllers/auth-controller.js";
 const userRouter = express.Router();
 import passport from "passport";
 
@@ -18,6 +14,7 @@ userRouter.post("/login", (req, res) => {
     }
 
     return res.status(200).json({
+      userId: user._id,
       username: user.username,
       email: user.email,
       token: user.verificationToken,

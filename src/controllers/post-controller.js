@@ -9,6 +9,16 @@ export const getPosts = async (req, res) => {
   return res.status(200).json(posts);
 };
 
+export const getPost = async (req, res) => {
+  const id = req.params.id;
+  const post = await Post.findById(id);
+  if (!post) {
+    return res.status(401).json({ status: 401, message: "No post found!" });
+  }
+
+  return res.status(200).json(post);
+};
+
 export const createPost = async (req, res) => {
   const { user_id, post_author, poster, title, genre, content } = req.body;
   const newPost = new Post({
