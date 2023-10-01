@@ -4,6 +4,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRouter from "./src/routes/auth-routes.js";
 import userRouter from "./src/routes/user-routes.js";
+import postRouter from "./src/routes/post-routes.js";
+
 import connectMongo from "./src/config/mongo.js";
 import swaggerMiddleware from "./src/middlewares/swagger-middleware.js";
 import passport from "./src/config/passport-config.js";
@@ -36,6 +38,7 @@ server.use(flash());
 // Routes
 server.use("/api/v1/auth/", authRouter);
 server.use("/api/v1/user/", userRouter);
+server.use("/api/v1/post/", postRouter);
 
 server.use("/", ...swaggerMiddleware());
 
